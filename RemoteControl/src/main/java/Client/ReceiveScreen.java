@@ -40,9 +40,11 @@ class ReceiveScreen extends Thread{
 					count+=oin.read(bytes,count,bytes.length-count);
 				}while(!(count>4 && bytes[count-2]==(byte)-1 && bytes[count-1]==(byte)-39));
                                 Dimension dim=Toolkit.getDefaultToolkit().getScreenSize();
+//                                System.out.println(dim.getWidth());
+//                                System.out.println(cPanel.getWidth());
 				image1 = ImageIO.read(new ByteArrayInputStream(bytes));
                                 frame.setImg(image1);
-				image1 = image1.getScaledInstance((int)dim.getWidth(),(int)dim.getHeight(),Image.SCALE_FAST);
+				image1 = image1.getScaledInstance((int)cPanel.getWidth(),(int)cPanel.getHeight(),Image.SCALE_FAST);
                                  
 				//Draw the received screenshots
 

@@ -28,8 +28,8 @@ class SendEvents implements KeyListener, MouseMotionListener, MouseListener{
 		this.width = width;
 		this.height = height;
 		w = Double.valueOf(width.trim()).doubleValue();
-		h = Double.valueOf(width.trim()).doubleValue();
-
+		h = Double.valueOf(height.trim()).doubleValue();
+                
 		//Associate event listeners to the panel
                 
                    
@@ -50,6 +50,8 @@ class SendEvents implements KeyListener, MouseMotionListener, MouseListener{
 	public void mouseMoved(MouseEvent e){
 		double xScale = (double)w/cPanel.getWidth();
 		double yScale = (double)h/cPanel.getHeight();
+//                double xScale = 1;
+//                double yScale = 1;
 		writer.println(Commands.MOVE_MOUSE.getAbbrev());
 		writer.println((int)(e.getX()*xScale));
 		writer.println((int)(e.getY()*yScale));
@@ -60,6 +62,8 @@ class SendEvents implements KeyListener, MouseMotionListener, MouseListener{
 	}
 
 	public void mousePressed(MouseEvent e){
+//            System.out.println("test1");
+                cPanel.requestFocusInWindow();
 		writer.println(Commands.PRESS_MOUSE.getAbbrev());
 		int button = e.getButton();
 		int xButton = 16;
@@ -87,6 +91,7 @@ class SendEvents implements KeyListener, MouseMotionListener, MouseListener{
 	}
 
 	public void keyTyped(KeyEvent e){
+//            System.out.println(e.getKeyCode());
 	}
 
 	public void keyPressed(KeyEvent e){

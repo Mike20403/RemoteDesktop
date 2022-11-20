@@ -65,9 +65,7 @@ class CreateFrame extends Thread {
 //		frame.setExtendedState(frame.getExtendedState()|JFrame.MAXIMIZED_BOTH);		
                JPanel jPanel2 = frame. getjPanel2();
               
-               JDesktopPane jDesktopPane = frame.getjDesktopPane1();
-               Dimension dim=Toolkit.getDefaultToolkit().getScreenSize();
-               jPanel2.setPreferredSize(dim);
+//           
                jPanel2.setFocusable(true);
                jPanel2.requestFocus();
 
